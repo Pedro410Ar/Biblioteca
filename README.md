@@ -3,7 +3,11 @@
 
 
 De acuerdo a la Actividad de Cierre propuesta en el Curso, se realizó un proyecto siguiendo las temáticas tratadas. 
+
 Para ello, se trabajó utilizando lenguaje JAVA. 
+
 Se generó un proyecto Maven.
+
 Como IDE se usó el IntelliJ Community. 
+
 Para generar la DB se utilizó Workbench MySQL.
