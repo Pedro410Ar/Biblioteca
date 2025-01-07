@@ -3,17 +3,11 @@
 
 
 De acuerdo a la Actividad de Cierre propuesta en el Curso, 
-
 se realizó un proyecto siguiendo las temáticas tratadas. 
-
 Para el caso se creó un sistema de Gestión de Libros que puede adaptarse a
-
 cualquier producto similar. 
 
 Para ello, se trabajó utilizando lenguaje JAVA. 
-
 Se generó un proyecto Maven con Springboot.
-
 Como IDE se usó el IntelliJ Community. 
-
 Para generar la DB se utilizó Workbench MySQL.
