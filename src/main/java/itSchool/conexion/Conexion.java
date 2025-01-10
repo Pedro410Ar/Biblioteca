@@ -1,5 +1,6 @@
 package itSchool.conexion;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,18 +19,9 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexion = DriverManager.getConnection(url, usuario, password);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Ocurrio un error en la conexion: " + e.getMessage());
+            //System.out.println("Ocurrio un error en la conexion: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocurrio un error en la conexion: " + e.getMessage());
         }
         return conexion;
     }
-/*
-    public static void main(String[] args) {
-        var conexion = Conexion.getConexion();
-        if(conexion != null)
-            System.out.println("Conexion exitosa");
-        else
-            System.out.println("Error al conectarse con la Base de Datos");
-    }
-
- */
 }

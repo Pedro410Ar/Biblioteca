@@ -2,6 +2,7 @@ package itSchool.datos;
 
 import itSchool.model.Libro;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,17 +35,18 @@ public class LibroDAO {
                 libros.add(libro);
             }
         } catch (Exception e) {
-            System.out.println("Ocurrio un error al seleccionar datos: " + e.getMessage());
+            //System.out.println("Ocurrio un error al seleccionar datos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al seleccionar datos: " + e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (Exception e) {
-                System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                //System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
         return libros;
     }
-
 
     //FIND BY ID
     public boolean buscarLibroById(Libro libro) {
@@ -65,12 +67,15 @@ public class LibroDAO {
                 return true;
             }
         } catch (Exception e) {
-            System.out.println("Ocurrio un error al buscar el Libro " + e.getMessage());
+            //System.out.println("Ocurrio un error al buscar el Libro " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al buscar el Libro " + e.getMessage());
+
         } finally {
             try {
                 con.close();
             } catch (Exception e) {
-                System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                //System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
         return false;
@@ -91,13 +96,16 @@ public class LibroDAO {
             return true;
 
         } catch(Exception e){
-            System.out.println("Error al agregar Libro " + e.getMessage());
+            //System.out.println("Error al agregar Libro " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al agregar Libro" + e.getMessage());
+
         }
         finally {
             try{
                 con.close();
             }catch(Exception e){
-                System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                //System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
         return false;
@@ -119,20 +127,23 @@ public class LibroDAO {
             return true;
 
         } catch(Exception e){
-            System.out.println("Error al modificar registro " + e.getMessage());
+           // System.out.println("Error al modificar registro " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al modificar el registro " + e.getMessage());
+
         }
         finally {
             try{
                 con.close();
             }catch(Exception e){
-                System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                //System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
         return false;
     }
 
     //ELIMINAR LIBRO
-    public boolean eliminarLibro(Libro libro){
+    public static boolean eliminarLibro(Libro libro){
         PreparedStatement ps;
         Connection con = getConexion();
         String sql = "DELETE FROM libros WHERE id=?";
@@ -144,70 +155,18 @@ public class LibroDAO {
             return true;
 
         } catch(Exception e){
-            System.out.println("Error al eliminar el Libro " + e.getMessage());
+            //System.out.println("Error al eliminar el Libro " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el Libro " + e.getMessage());
+
         }
         finally {
             try {
                 con.close();
             } catch (Exception e) {
-                System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                //System.out.println("Ocurrio un error al cerrar la conexion" + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al cerrar la conexion: " + e.getMessage());
             }
         }
         return false;
     }
-
-
-
-/*
-    public static void main(String[] args) {
-        var libroDao = new LibroDAO();
-
-        //LISTAR LIBROS
-        System.out.println("");
-        System.out.println("*** Listado de Libros ***");
-        System.out.println("");
-        List<Libro> libros = libroDao.listarLibros();
-        libros.forEach(System.out::println);
-
-
-        //BUSCAR POR ID
-        var libro1 = new Libro(8);
-        var encontrado = libroDao.buscarLibroById(libro1);
-        if (encontrado)
-            System.out.println("Libro encontrado" + libro1);
-        else
-            System.out.println("No se encontro el libro");
-
-        //AGREGAR LIBRO
-        var nuevoLibro = new Libro( "Los 3 Cerditos", "Grimm", 1990);
-        var agregado = libroDao.agregarLibro(nuevoLibro);
-        if(agregado)
-            System.out.println("Libro agregado correctamente");
-        else
-            System.out.println("No se pudo agregar el Libro indicado");
-
-
-        //MODIFICAR REGISTRO
-        var libroModificar = new Libro(11,"Blancanieves", "Anonimo", 1833);
-        var modificado = libroDao.modificarLibro(libroModificar);
-        if(modificado)
-            System.out.println("Libro modificado correctamente" + libroModificar);
-        else
-            System.out.println("No se pudo modificar el registro");
-
-
-
-        //ELIMINAR ESTUDIANTE
-        var libroEliminar = new Libro(8);
-        var eliminado = libroDao.eliminarLibro(libroEliminar);
-        if(eliminado)
-            System.out.println("El Libro fue eliminado correctamente");
-        else
-            System.out.println("No se pudo eliminar el registro");
-
-
-
-    }
-
- */
 }

@@ -1,12 +1,15 @@
 package itSchool.model;
 
+//CLASE LIBRO CON ATRIBUTOS
 public class Libro {
 
+    //ATRIBUTOS
      private int idLibro;
      private String titulo;
      private String autor;
      private int fechaPublicacion;
 
+     //CONSTRUCTORES
     public Libro() {
     }
 
@@ -27,6 +30,7 @@ public class Libro {
         this.fechaPublicacion = fechaPublicacion;
     }
 
+    //GETTER Y SETTER
     public int getIdLibro() {
         return idLibro;
     }
@@ -59,6 +63,7 @@ public class Libro {
         this.fechaPublicacion = fechaPublicacion;
     }
 
+    //METODO TO STRING
     @Override
     public String toString() {
         return "Libro {" +
